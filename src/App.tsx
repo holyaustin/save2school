@@ -21,7 +21,7 @@ import BrowserWallet from './BrowserWallet';
 import { usePiggybank } from './usePiggybank';
 import { refreshPiggybankState, PiggybankState } from './state';
 import { errorString } from './error';
-import packageInfo from '../package.json';
+// import packageInfo from '../package.json';
 
 function refreshContract(rpc: ConcordiumGRPCClient, index: bigint, setContract: React.Dispatch<Info | undefined>) {
     // TODO Store and display error instead of just logging it.
@@ -76,8 +76,8 @@ export default function App(props: WalletConnectionProps) {
     return (
         <Container>
             <Row>
-                <Col className="d-flex">
-                    <h1>Piggybank dApp</h1>
+                <Col className="d-flex bg-blue-700">
+                    <h1>Save2School dApp</h1>
                     <div className="ms-auto p-2">
                         {rpc && <ContractManager rpc={rpc} contract={contract} setContract={setContract} />}
                         {!rpc && <i>Loading...</i>}
@@ -133,8 +133,15 @@ export default function App(props: WalletConnectionProps) {
                         (state) => (
                             <>
                                 <h2>
-                                    Piggybank instance <code>{state.contract.index.toString()}</code>
+                                    Save2School instance <code>{state.contract.index.toString()}</code>
                                 </h2>
+                                <h6>
+                                    {' '}
+                                    Education is the passport to the future, for tomorrow belongs to those who prepare
+                                    for it today. – Malcolm X
+                                </h6>
+                                <h6> An investment in knowledge pays the best interest. – Benjamin Franklin</h6>
+                                <h6> Education is not preparation for life; education is life itself. – John Dewey</h6>
                                 <Alert variant="light" className="d-flex">
                                     <div className="me-auto p-2">
                                         Owned by{' '}
@@ -171,14 +178,6 @@ export default function App(props: WalletConnectionProps) {
                 </Col>
             </Row>
             <hr />
-            Version: {packageInfo.version} |{' '}
-            <a
-                href="https://developer.concordium.software/en/mainnet/smart-contracts/tutorials/piggy-bank/index.html"
-                target="_blank"
-                rel="noreferrer"
-            >
-                Explore the piggy bank tutorial here.
-            </a>
         </Container>
     );
 }
